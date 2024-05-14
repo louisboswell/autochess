@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cecaj42wuo24"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_ic7dj"]
+[ext_resource type="Texture2D" uid="uid://bw71x3ygd5xha" path="res://assets/colored-transparent_packed.png" id="2_rc2kb"]
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_ic7dj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rc2kb")
+hframes = 49
+vframes = 22
+frame = 28
