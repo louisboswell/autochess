@@ -1,11 +1,10 @@
-extends Node2D
+extends Node
 
-@onready var sprite = $Sprite2D
+@onready var army : Array = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	#sprite.frame_coords = Vector2i(randi_range(24, 31), randi_range(0, 4))
-	pass
+func _ready(): 
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

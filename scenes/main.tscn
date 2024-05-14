@@ -11,15 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Level" parent="." instance=ExtResource("1_gqb1k")]
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(120, 40)
-zoom = Vector2(4, 4)
-
-[node name="Attack Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 82.0
-offset_bottom = 119.0
-text = "Attack"
+position = Vector2(256, -112)
