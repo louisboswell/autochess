@@ -63,11 +63,10 @@ func _on_button_pressed():
 	attacking = true
 	var timer = 0.5
 
-	for row in battle_array:
-		for cell in row:
-			if cell:
-				await get_tree().create_timer(timer).timeout
-				if timer > 0.1:
-					timer -= 0.02
-				cell.attack(battle_array)
+	
+	for y in range(battle_array[0].size()):
+		for x in range(battle_array.size()):
+			if battle_array[x][y]:
+				await get_tree().create_timer(0.1).timeout
+				battle_array[x][y].attack(battle_array)
 	attacking = false
