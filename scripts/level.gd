@@ -3,20 +3,34 @@ extends Node2D
 var character = preload("res://characters/base.tscn")
 @onready var tilemap = get_node("TileMap")
 
+@onready var label = get_node("Label")
+
 var battle_array : Array = []
+var damage : int = 0
+var attacking : bool = false
 
 func _ready():
 	_init_array()
+
+func _process(delta):
+	label.text = str(damage)
+	pass
 
 # Initialise the battle array
 func _init_array():
 	var tilemap_size = tilemap.get_used_rect().size
 	for x in range(tilemap_size.x):
-		battle_array.append([])
+		var row = []
 		for y in range(tilemap_size.y):
-			battle_array[x].append(0)
+			row.append(0)
+		battle_array.append(row)
+	
 
 func _input(event):
+
+	if attacking:
+		return
+
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = to_local(get_global_mouse_position())
 		var tileset_coords = tilemap.local_to_map(mouse_pos)
@@ -43,3 +57,17 @@ func _input(event):
 		if battle_array[tileset_coords.x][tileset_coords.y]:
 			battle_array[tileset_coords.x][tileset_coords.y].queue_free()
 			battle_array[tileset_coords.x][tileset_coords.y] = 0
+
+
+func _on_button_pressed():
+	attacking = true
+	var timer = 0.5
+
+	for row in battle_array:
+		for cell in row:
+			if cell:
+				await get_tree().create_timer(timer).timeout
+				if timer > 0.1:
+					timer -= 0.02
+				cell.attack(battle_array)
+	attacking = false

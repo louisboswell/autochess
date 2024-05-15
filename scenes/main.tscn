@@ -11,7 +11,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Level" parent="." instance=ExtResource("1_gqb1k")]
+position = Vector2(416, 776)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(256, -112)
+position = Vector2(672, 664)
